@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07 singleview / personliste</title>
+         <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300i,700" rel="stylesheet">
+
+    <style>
+
+      .personer {
+            margin: 10px;
+            width: 200px;
+        }
+
+        img {
+            width: 15vw;
+            height: 15vw;
+
+        }
+
+        #liste {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            align-items: center;
+            text-align: center;
+        }
+
+
+        .person {
+            background-color: #ffffff;
+            margin: 7px;
+            box-shadow: 5px 5px rgba(234, 234, 234, 0.84);
+
+        }
+
+        html {
+            background-color: #f2f2f2;
+        }
+
+        h2 {
+            font-family: 'Open Sans Condensed', sans-serif;
+            font-size: 2rem;
+            font-weight: 100;
+        }
+
+        a {
+            font-family: 'Open Sans Condensed', sans-serif;
+            text-decoration: none;
+            color: rgba(0, 0, 0, 0.9);
+        }
+
+        .menu {
+            text-align: center;
+
+        }
+
+        .valgt {
+            background-color: rgba(209, 209, 209, 0.63);
+        }
+
+        button {
+            height: 3vw;
+            width: 7vw;
+            margin: 10px;
+            border: 2px solid rgba(255, 255, 0, 0.33);
+        }
+
+        h1 {
+            text-align: center;
+            font-family: 'Open Sans Condensed', sans-serif;
+            font-size: 2rem;
+        }
+
+        #singleview {
+            width: 100vw;
+            height: 100vh;
+            background-color: #ffffff;
+        }
+
+        #indhold {
+            box-sizing: border-box;
+            background-color: rgba(209, 209, 209, 0.63);
+            width: 90vw;
+            height: 90vh;
+            margin: auto;
+        }
+
+        #luk {
+            box-sizing: border-box;
+            text-align: right;
+            padding-right: 1em;
+        }
+
+        #luk button {
+            font-size: 2em;
+        }
+
+    </style>
+</head>
+
+
+<body>
+    <div id="singleview">
+        <div id="tilbage"><button>X</button></div>
+        <div id="indhold"></div>
+    </div>
+
+    <script>
+        let urlParams = new URLSearchParams(window.location.search);
+        let github = urlParams.get("github");
+        console.log("github");
+        let personer;
+        let person;
+        document.addEventListener("DOMContentLoaded", start);
+        function start() {
+            async function getJson() {
+                let jsonData = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1OLlD_GRoz71piHvnW306omRAyHS7vtLOILQt-K0YF_c");
+                personer = await jsonData.json();
+                personer.forEach(obj => {
+                    if (obj.github == github) {
+                        person = obj;
+                    }
+                })
+                åbn();
+            }
+            function åbn() {
+                document.querySelector("#indhold").innerHTML = `
+                    <article class="person">
+                        <h2>${person.navn}</h2>
+                        <img class="billede" src="${person.billede}"><br>
+                        <p>Hold: ${person.hold}, Alder:${person.alder}</p>
+                        <h3>${person.navn}'s historie</h3>
+                        <p>${person.historie}</p>
+                    </article>
+                    `;
+            }
+            document.querySelector("#tilbage button").addEventListener("click", () => {
+                location.href = "05-kald.html"
+            })
+            getJson();
+        }
+    </script>
+    <footer></footer>
+</body>
+
+</html>
