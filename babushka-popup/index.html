@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="da">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bistro Babushka</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Arapey:400,400i" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #ffffff;
+            margin: 0;
+        }
+
+        .header-pic {
+            background-color: rgba(0, 0, 118, 0.63);
+            height: 25vw;
+            font-size: 9vw;
+            text-align: center;
+            padding-top: 6vw;
+            padding-left: 4vw;
+            color: rgba(255, 248, 0, 0.96);
+            font-family: 'Arapey', serif;
+        }
+
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 2.5vw;
+        }
+
+        .filter {
+            margin: 1vw;
+            font-family: 'Arapey', serif;
+            font-size: 1.5vw;
+        }
+
+        .valgt {
+            background-color: rgba(224, 224, 224, 0.57);
+        }
+
+        .overskrift {
+            text-align: center;
+            font-size: 5vw;
+            font-weight: 300;
+            font-family: 'Arapey', serif;
+            color: rgba(0, 0, 0, 0.84);
+        }
+
+
+        #menu {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            text-align: center;
+
+        }
+
+        .madret {
+            height: 30vw;
+            width: 25vw;
+            box-shadow: 3px 4px rgba(199, 194, 0, 0.57);
+            margin: 2vw;
+            background-color: rgba(255, 248, 0, 0.57);
+            border-radius: 4px;
+            font-family: 'Arapey', serif;
+            font-size: 1.2vw;
+        }
+
+        img {
+            width: 300px;
+            height: 200px;
+        }
+
+
+
+
+        #stjerner {
+            position: absolute;
+            background-image: url(stjerner.png);
+            background-repeat: no-repeat;
+            width: 30vw;
+            height: 10vh;
+            top: 35vh;
+            left: 40vw;
+        }
+
+        #popup {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            display: none;
+            background-color: #ffffff;
+            z-index: 1;
+
+        }
+
+        #indhold {
+            width: 50vw;
+            height: 70vh;
+            margin: auto;
+            padding: 3vw;
+            text-align: center;
+            font-family: 'Arapey', serif;
+            background-color: rgba(255, 248, 0, 0.57);
+            border-radius: 5px;
+            font-size: 1.5vw;
+            box-shadow: 4px 4px yellow;
+        }
+
+        button {
+            color: rgba(0, 0, 0, 0.84);
+            background-color: rgba(255, 255, 255, 0.63);
+            border-radius: 3px;
+        }
+
+        #luk {
+            text-align: right;
+
+        }
+
+        #luk button {
+            font-size: 1.5vw;
+            margin-right: 15vw;
+            margin-top: 2vw;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="popup">
+        <div id="luk"><button>x</button></div>
+        <div id="indhold"></div>
+    </div>
+
+
+    <header>
+
+        <div class="header-pic">BISTRO BABUSHKA</div>
+        <div id="stjerner"></div>
+
+
+        <h1 class="overskrift">Alle</h1>
+        <nav>
+            <button class="filter valgt" data-kategori="alle">
+                Alle
+            </button>
+
+            <button class="filter" data-kategori="forretter">
+                Foretter
+            </button>
+
+            <button class="filter" data-kategori="hovedretter">
+                Hovedretter
+            </button>
+
+            <button class="filter" data-kategori="desserter">
+                Desserter
+            </button>
+
+            <button class="filter" data-kategori="drikkevarer">
+                Drikkevarer
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <div id="menu"></div>
+    </main>
+
+    <footer>
+    </footer>
+
+    <script>
+        let mad = [];
+        let filter = "alle";
+
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+            let dest = document.querySelector("#menu");
+
+            async function getJson() {
+                let jsonData = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1jxxxFoWBuMJ1qhQ9BQIAyKHmP38XtAF9_sQr0xo5JLo");
+                mad = await jsonData.json();
+                visRet();
+            }
+
+            function visRet() {
+                dest.innerHTML = "";
+                mad.forEach(madret => {
+                    if (filter == "alle" || filter == madret.kategori) {
+                        let template = `<article class="madret"><h2>${madret.navn}</h2><img src="small/${madret.billede}-sm.jpg"><p>${madret.kort}</p><h3>${madret.pris}kr</h3></article>`;
+
+                        dest.insertAdjacentHTML("beforeend", template);
+                        dest.lastElementChild.addEventListener("click", åbn);
+
+                        function åbn() {
+                            document.querySelector("#indhold").innerHTML = `<article><h2>${madret.navn}</h2><img src="small/${madret.billede}-sm.jpg"><h3>Oprindelse:${madret.oprindelse}</h3><p>${madret.lang}</p><h3>${madret.pris}kr</h3></article>`;
+                            document.querySelector("#popup").style.display = "block";
+                        }
+                    }
+                })
+            }
+            //function visRet slut
+
+            //pop-up
+            document.querySelector("#luk button").addEventListener("click", () => {
+                document.querySelector("#popup").style.display = "none";
+            })
+            document.querySelectorAll(".filter").forEach(elm => {
+                elm.addEventListener("click", filtrering);
+            })
+
+            function filtrering() {
+                filter = this.getAttribute("data-kategori");
+                document.querySelector("h1").textContent = this.textContent;
+                document.querySelectorAll(".filter").forEach(elm => {
+                    elm.classList.remove("valgt");
+                })
+                this.classList.add("valgt");
+                visRet();
+            }
+
+            getJson();
+        }
+
+    </script>
+</body>
