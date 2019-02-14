@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bistro Babushka</title>
+
+    <style>
+        body {
+            background-color: #ffffff;
+            margin: 0;
+        }
+
+        .madret {
+
+            height: 30vw;
+            width: 25vw;
+            box-shadow: 3px 4px rgba(199, 194, 0, 0.57);
+            margin: 2vw;
+            background-color: rgba(255, 248, 0, 0.57);
+            border-radius: 4px;
+            font-family: 'Arapey', serif;
+            font-size: 1.2vw;
+        }
+
+        img {
+            width: 300px;
+            height: 200px;
+        }
+
+        #singleview {
+
+            width: 100vw;
+            height: 100vh;
+            background-color: #ffffff;
+
+        }
+
+        #indhold {
+
+            width: 50vw;
+            height: 70vh;
+            margin: auto;
+            padding: 3vw;
+            text-align: center;
+            font-family: 'Arapey', serif;
+            background-color: rgba(255, 248, 0, 0.57);
+            border-radius: 5px;
+            font-size: 1.5vw;
+            box-shadow: 4px 4px yellow;
+        }
+
+        button {
+            color: rgba(0, 0, 0, 0.84);
+            background-color: rgba(255, 255, 255, 0.63);
+            border-radius: 3px;
+        }
+
+        #tilbage {
+
+            text-align: right;
+
+        }
+
+        #tilbage button {
+
+            font-size: 1.5vw;
+            margin-right: 15vw;
+            margin-top: 2vw;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="singleview">
+        <div id="tilbage"><button>x</button> </div>
+        <div id="indhold"></div>
+    </div>
+
+    <script>
+        let urlParams = new URLSearchParams(window.location.search);
+        let id = urlParams.get("id");
+        let mad = [];
+        let filter = "alle";
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+            console.log(id);
+            let dest = document.querySelector("#menu");
+            async function getJson() {
+                let jsonData = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1jxxxFoWBuMJ1qhQ9BQIAyKHmP38XtAF9_sQr0xo5JLo");
+                mad = await jsonData.json();
+                mad.forEach(obj => {
+                    if (obj.id == id) {
+                        madret = obj;
+                    }
+                })
+
+                åbn();
+            }
+
+            function åbn() {
+                document.querySelector("#indhold").innerHTML = `<article><h2>${madret.navn}</h2><img src="small/${madret.billede}-sm.jpg"><h3>Oprindelse: ${madret.oprindelse}</h3><p>${madret.lang}</p><h3>${madret.pris}kr</h3></article>`;
+            }
+
+            document.querySelector("#tilbage button").addEventListener("click", () => {
+                location.href = "index.html"
+            })
+            getJson();
+        }
+    </script>
+</body>
+
+</html>
