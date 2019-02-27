@@ -1,0 +1,145 @@
+[{
+    "id": 1,
+    "kategori": "Main dish",
+    "navn": "Cashew Indian Butter Paneer",
+    "pris": 85,
+    "kort": "Creamy Cashew Indian Butter Paneer",
+    "lang": "Broccoli, cilantro, garlic, fresh ginger, sweet onion, roasted cashews, coconut oil, greek yoghurt, tomato paste, coconut milk and red curry paste",
+    "billede": "cashew"
+}, {
+    "id": 2,
+    "kategori": "Main dish",
+    "navn": "Creamy Coconut Lentil Curry",
+    "pris": 85,
+    "kort": "Creamy Coconut Lentil Curry",
+    "lang": "Brown dried lentils, cherry tomatoes, cilantro, fresh ginger, garlic, coconut milk, turmeric and coconut oil",
+    "billede": "kikaerter"
+}, {
+    "id": 3,
+    "kategori": "Main dish",
+    "navn": "Coconut Butter Cauliflower",
+    "pris": 85,
+    "kort": "Coconut Butter Cauliflower",
+    "lang": "Cauliflower, cilantro, garlic, fresh ginger, yellow onion, coconut milk, tomato paste, coconut oil, olive oil, cayenne pepper, yellow curry powder, garam masala and turmeric ",
+    "billede": "cauliflower"
+}, {
+    "id": 4,
+    "kategori": "Main dish",
+    "navn": "Butter Chicken",
+    "pris": 110,
+    "kort": "Butter Chicken",
+    "lang": "Bay leaf, coriander, garlic, fresh ginger, parsley, yellow onion, green bell pepper, jalape\u00f1os, brown sugar, cardamom, cinnamon, garam masala, red pepper flakes, grounded cumin, clarified butter and heavy cream",
+    "billede": "butterchicken"
+}, {
+    "id": 5,
+    "kategori": "Main dish",
+    "navn": "Lamb Tikka Masala",
+    "pris": 110,
+    "kort": "Lamb Tikka Masala",
+    "lang": "Lamb, bay leaf, coriander, garlic, fresh ginger, parsley, yellow onion, green bell pepper, jalape\u00f1os, brown sugar, cardamom, cinnamon, garam masala, red pepper flakes, grounded cumin, clarified butter and heavy cream ",
+    "billede": "lamb-tikka"
+}, {
+    "id": 6,
+    "kategori": "Main dish",
+    "navn": "Chicken Tikka Masala",
+    "pris": 110,
+    "kort": "Chicken Tikka Masala",
+    "lang": "Chicken, bay leaf, coriander, garlic, fresh ginger, parsley, yellow onion, green bell pepper, jalape\u00f1os, brown sugar, cardamom, cinnamon, garam masala, red pepper flakes, grounded cumin, clarified butter and heavy cream",
+    "billede": "chicken-tikka"
+}, {
+    "id": 7,
+    "kategori": "Side dish",
+    "navn": "Atari Dahi Bhindi",
+    "pris": 40,
+    "kort": "Atari Dahi Bhindi",
+    "lang": "Okra, tomatoes, coriander, yellow onion, asafoetida, fennel, mustard seeds, red chili, cumin seeds, nigella seeds, greek yoghurt, fresh ginger and turmeric ",
+    "billede": "okra"
+}, {
+    "id": 8,
+    "kategori": "Side dish",
+    "navn": "Saag Aloo ",
+    "pris": 40,
+    "kort": "Saag Aloo ",
+    "lang": "Spinach, potatoes, green chili, fresh ginger, yellow onion, garlic, chili powder and olive oil ",
+    "billede": "saagaloo"
+}, {
+    "id": 9,
+    "kategori": "Side dish",
+    "navn": "Vaghareli Makai ",
+    "pris": 30,
+    "kort": "Vaghareli Makai ",
+    "lang": "Fresh corn, cilantro, garlic, roasted peanuts, fresh ginger, lime juice, red chili, mustard seeds, salt, turmeric and clarified butter ",
+    "billede": "corn"
+}, {
+    "id": 10,
+    "kategori": "Side dish",
+    "navn": "Samosa",
+    "pris": 35,
+    "kort": "Samosa ",
+    "lang": "Potatoes, green peas, dried mango, cashew nuts, cumin seeds, coriander, cumin seeds, pomegranate and dried chili ",
+    "billede": "samosa"
+}, {
+    "id": 11,
+    "kategori": "Side dish",
+    "navn": "Bombay Potatoes",
+    "pris": 30,
+    "kort": "Bombay Potatoes",
+    "lang": "Potatoes, turmeric, black mustard seeds, curry powder, garam masala ",
+    "billede": "potatoes"
+}, {
+    "id": 12,
+    "kategori": "Side dish",
+    "navn": "Vegetarian Seekh Kebab",
+    "pris": 40,
+    "kort": "Vegetarian Seekh Kebab",
+    "lang": "Potatoes, paneer, yellow onion, fresh ginger, green peas, carrots, green beans, beetroot, mint leaves, cashews, chickpeas",
+    "billede": "kebab"
+}, {
+    "id": 13,
+    "kategori": "Drinks",
+    "navn": "Mango Lassi",
+    "pris": 20,
+    "kort": "Mango Lassi",
+    "lang": "Fresh mango, cardamom, saffron, brown sugar, milk and yoghurt",
+    "billede": "mango"
+}, {
+    "id": 14,
+    "kategori": "Drinks",
+    "navn": "Almond Chai",
+    "pris": 20,
+    "kort": "Chai Almond Latte",
+    "lang": "Water, almond milk, brown sugar, black tea, cardamom, cinnamon sticks and fennel seeds",
+    "billede": "chai"
+}, {
+    "id": 15,
+    "kategori": "Drinks",
+    "navn": "Lemonade",
+    "pris": 20,
+    "kort": "Lemonade",
+    "lang": "Water, lime juice, brown sugar and mint",
+    "billede": "lemonade"
+}, {
+    "id": 16,
+    "kategori": "Drinks",
+    "navn": "Pudina Aam Panna ",
+    "pris": 20,
+    "kort": "Pudina Aam Panna ",
+    "lang": "Green mango, mint leaves, brown sugar, black salt and roasted cumin ",
+    "billede": "pudina"
+}, {
+    "id": 17,
+    "kategori": "Drinks",
+    "navn": "Gajar Kanji",
+    "pris": 20,
+    "kort": "Gajar Kanji",
+    "lang": "Beetroot, carrots, brown sugar, red chili",
+    "billede": "kanji"
+}, {
+    "id": 18,
+    "kategori": "Drinks",
+    "navn": "Coconut Water",
+    "pris": 20,
+    "kort": "Coconut Water",
+    "lang": "Coconut Water",
+    "billede": "coco"
+}]
